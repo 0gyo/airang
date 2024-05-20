@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
     <main className="flex w-full h-screen justify-center items-center space-x-4">
-      <div className="my-auto w-[620px] h-[690px] bg-white pl-[52px] pr-[52px]">
+      <div className="my-auto w-[620px] h-[690px] bg-white pl-[52px] pr-[52px] rounded-xl">
         <Image 
           src="../images/logo.svg" 
           alt="Logo"
@@ -106,7 +106,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="w-[620px] h-[690px] bg-white flex items-end justify-end p-10">
+      <div className="w-[620px] h-[690px] bg-white flex items-end justify-end p-10 rounded-xl">
         <button
           className="w-[220px] h-[60px] bg-[#FF6007] text-white font-pretendard-regular rounded" style={{ fontSize: "24px", lineHeight: "140%" }}
           onClick={() => createStory()}
