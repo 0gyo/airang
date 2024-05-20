@@ -54,7 +54,7 @@ export default function Home() {
         <p className="font-pretendard-medium text-[#171717] pt-4 pb-10" style={{ fontSize: "24px", lineHeight: "150%"}}>{texts[step]}</p>
         <p className="font-pretendard-medium text-[#171717] self-end pb-4">{step+1}</p>
       </div>
-      <button onClick={() => setStep(step + 1)}>
+      <button onClick={() => step !== texts.length ? setStep(step + 1) : router.push("/end")}>
         <Image 
           src="../images/right.svg" 
           alt="right"
@@ -64,5 +64,4 @@ export default function Home() {
       </button>
     </main>
   );
-
 }
