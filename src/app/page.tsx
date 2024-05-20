@@ -11,6 +11,27 @@ export default function Home() {
   const [lesson, setLesson] = useState<string>("");
   const [detail, setDetail] = useState<string>("");
 
+  const createStory = async () => {
+    const response = await fetch("/api/v1/story/creation", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ 
+        name: name, 
+        lesson: lesson, 
+        detail: lesson 
+      }),
+    });
+
+    const result = await response.json();
+    console.log("result: " + result.data.texts[0]);
+    console.log("result: " + result.data.texts[1]);
+    console.log("result: " + result.data.images[0]);
+    console.log("result: " + result.data.images[1]);
+    return result;
+  }
+
   return (
     <main className="flex w-full h-screen justify-center items-center space-x-4">
       <div className="my-auto w-[620px] h-[690px] bg-white pl-[52px] pr-[52px]">
@@ -89,7 +110,7 @@ export default function Home() {
       <div className="w-[620px] h-[690px] bg-white flex items-end justify-end p-10">
         <button
           className="w-[220px] h-[60px] bg-[#FF6007] text-white font-pretendard-regular rounded" style={{ fontSize: "24px", lineHeight: "140%" }}
-          onClick={() => setTimeout(() => router.push("/storybook"), 30 * 1000)}
+          onClick={() => createStory()}
         >
           동화 만들기
         </button>
