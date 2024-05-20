@@ -1,8 +1,7 @@
 import OpenAI from "openai";
 
 const openai = new OpenAI({
-  apiKey: process.env.OPEN_AI_API_KEY as string,
-  baseURL: process.env.OPEN_AI_BASE_URL as string
+  apiKey: process.env.OPEN_AI_API_KEY as string
 });
 
 const createStory = async (name: any, lesson: any, detail: any) => {

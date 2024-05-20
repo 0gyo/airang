@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import { use, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
