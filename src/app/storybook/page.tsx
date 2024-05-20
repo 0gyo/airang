@@ -5,7 +5,7 @@ import { use, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
-  w
+  const router = useRouter();
 
   const [step, setStep] = useState<number>(-1);
   const [images, setImages] = useState<string[]>([]);
