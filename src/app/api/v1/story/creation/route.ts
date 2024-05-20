@@ -4,7 +4,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPEN_AI_API_KEY as string,
   baseURL: process.env.OPEN_AI_BASE_URL as string
 });
- 
+
 const createStory = async (name: any, lesson: any, detail: any) => {
   const authorList = ["Astrid Lindgren", "Andersen", "Anthony Browne", "Lewis Carroll", "Maurice Sendak"];
   const author = authorList[Math.floor(Math.random() * authorList.length)];
@@ -36,15 +36,20 @@ const slicePage = (text: any) => {
 };
 
 const createImageUrl = async (text: any) => {
-  const response = await openai.images.generate({
-    model: 'dall-e-3"',
-    prompt: `STYLE: Create a whimsical illustration in the style of Anthony Browne
-    CONTENT:${text}`,
-    n: 1,
-    size: '1024x1024',
-  });
+  try {
+    const response = await openai.images.generate({
+      model: 'dall-e-3',
+      prompt: `STYLE: Create a whimsical illustration in the style of Anthony Browne
+      CONTENT:${text}`,
+      n: 1,
+      size: '1024x1024',
+    });
 
-  return response.data[0].url;
+    return response.data[0].url;
+  }
+  catch (error: any) {
+    return "createImageUrl error";
+  }
 }
 
 const createImageArray = async (pages: any) => {
@@ -54,11 +59,10 @@ const createImageArray = async (pages: any) => {
       const imgUrl = await createImageUrl(page);
       imgList.push(imgUrl);
     }
+    return imgList;
   } catch (error: any) {
-    console.error(error);
+    return "createImageArray error";
   }
-  
-  return imgList;
 }
 
 export async function POST(request: Request) {

@@ -25,10 +25,9 @@ export default function Home() {
     });
 
     const result = await response.json();
-    console.log("result: " + result.data.texts[0]);
-    console.log("result: " + result.data.texts[1]);
-    console.log("result: " + result.data.images[0]);
-    console.log("result: " + result.data.images[1]);
+    localStorage.setItem("texts", JSON.stringify(result.data.texts));
+    localStorage.setItem("images", JSON.stringify(result.data.images));
+    router.push("/storybook");
     return result;
   }
 
