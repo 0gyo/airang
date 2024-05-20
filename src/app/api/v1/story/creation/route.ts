@@ -66,17 +66,28 @@ const createImageArray = async (pages: any) => {
 }
 
 export async function POST(request: Request) {
-  const { name, lesson, detail } = await request.json();
-  const story = await createStory(name, lesson, detail);
-  const texts = slicePage(story);
-  const images = await createImageArray(texts);
-  return new Response(
-    JSON.stringify({
-      success: true,
-      message: "성공",
-      data: {
-        texts: texts,
-        images: images
-      },
-    }));
+  try {
+    const { name, lesson, detail } = await request.json();
+    const story = await createStory(name, lesson, detail);
+    const texts = slicePage(story);
+    const images = await createImageArray(texts);
+    return new Response(
+      JSON.stringify({
+        success: true,
+        message: "성공",
+        data: {
+          texts: texts,
+          images: images
+        },
+      }
+    ));
+  } catch (error: any) {
+    return new Response(
+      JSON.stringify({
+        success: false,
+        message: "실패",
+        error: error
+      }
+    ));
+  }
 }

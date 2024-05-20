@@ -5,7 +5,7 @@ import { use, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const router = useRouter();
+  w
 
   const [step, setStep] = useState<number>(-1);
   const [images, setImages] = useState<string[]>([]);
@@ -35,16 +35,16 @@ export default function Home() {
           height={50}
         />
       </button>
-      <div className=" w-[620px] h-[690px] bg-white relative flex items-center justify-center">
+      <div className="w-[620px] h-[690px] bg-white relative flex items-center justify-center rounded-xl">
         <Image
           src={images[step]}
           alt="Stroy"
           layout="fill"
           objectFit="cover"
-          className="my-auto"
+          className="my-auto rounded-xl"
         />
       </div>
-      <div className="flex flex-col w-[620px] h-[690px] bg-white justify-end px-10">
+      <div className="flex flex-col w-[620px] h-[690px] bg-white justify-end px-10 rounded-xl">
         <Image
           src={"../images/quotation.svg"}
           alt="quotation"
@@ -54,7 +54,7 @@ export default function Home() {
         <p className="font-pretendard-medium text-[#171717] pt-4 pb-10" style={{ fontSize: "24px", lineHeight: "150%"}}>{texts[step]}</p>
         <p className="font-pretendard-medium text-[#171717] self-end pb-4">{step+1}</p>
       </div>
-      <button onClick={() => step !== texts.length ? setStep(step + 1) : router.push("/end")}>
+      <button onClick={() => step+1 !== texts.length ? setStep(step + 1) : router.push("/end")}>
         <Image 
           src="../images/right.svg" 
           alt="right"
